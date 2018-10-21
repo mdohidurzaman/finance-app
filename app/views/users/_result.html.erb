@@ -1,0 +1,21 @@
+<div class="container">
+   <div class="row no-padding col-md-10 ">
+   <%= bootstrap_flash %>
+  </div>
+ </div>
+
+<div class="stock-list row no-padding col-md-12">
+<table class="table well results-block">
+<thead>
+<% if @stock %>
+ <tr class="no-padding">
+     <td class="col"><strong>Symbol :</strong> <%=@stock.ticker %></td>
+     <td class="col"><strong>Name :</strong> <%=@stock.name %></td>
+     <td class="col"><strong>Latest price :</strong> <%=@stock.last_price %></td>
+     <td class="col"><strong>High price :</strong> <%=@stock.high_price %></td>
+     <td class="col"><strong>Low price :</strong> <%=@stock.low_price %></td>
+ </tr>
+ <% end %>
+ </thead>
+</table>
+</div>
