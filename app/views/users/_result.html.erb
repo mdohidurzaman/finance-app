@@ -1,21 +1,43 @@
-<div class="container">
-   <div class="row no-padding col-md-10 ">
-   <%= bootstrap_flash %>
-  </div>
- </div>
-
-<div class="stock-list row no-padding col-md-12">
-<table class="table well results-block">
-<thead>
-<% if @stock %>
- <tr class="no-padding">
-     <td class="col"><strong>Symbol :</strong> <%=@stock.ticker %></td>
-     <td class="col"><strong>Name :</strong> <%=@stock.name %></td>
-     <td class="col"><strong>Latest price :</strong> <%=@stock.last_price %></td>
-     <td class="col"><strong>High price :</strong> <%=@stock.high_price %></td>
-     <td class="col"><strong>Low price :</strong> <%=@stock.low_price %></td>
- </tr>
- <% end %>
- </thead>
-</table>
-</div>
+    <% if params[:action] == "search" %>
+    <div class="section">
+        <div class="container no-padding">
+       <div class="row no-padding">
+           <div class="col-md-10 no-padding">
+             <%= bootstrap_flash %>  
+           </div>
+         </div>
+     </div>
+    </div>
+    <% end %>
+    <div class="row no-padding">
+    <div class="col-md-10 no-padding">
+        <% if @stock %>
+    <div class="well results-block">
+         <strong>Symbol :</strong> <%=@stock.ticker %>
+         <strong>Name :</strong> <%=@stock.name %>
+         <strong>Latest price :</strong> <%=@stock.last_price %>
+         <strong>High price :</strong> <%=@stock.high_price %>
+         <strong>Low price :</strong> <%=@stock.low_price %>
+     </div>
+    </div>
+    
+    <div class="col-md-2">
+        <div class="add-stock-btn">
+        <% if current_user.can_add_stock?(@stock.ticker) %>
+         <%= link_to "Add to my stocks", user_stocks_path(user: current_user,
+         stock_ticker: @stock.ticker), class: "btn btn-lg btn-success add-stock", method: :post %>
+         <% else %>
+         <span class="label label-default label_notice">
+           You have already added
+           <% if !current_user.under_stock_limit? %>
+           10 stocks
+           <% end %>
+           <% if current_user.stock_already_added?(@stock.ticker) %>
+           this stock
+           <% end %>
+         </span>
+         <% end %>
+        </div>
+    </div>
+     <% end %>
+    </div>

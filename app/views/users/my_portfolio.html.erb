@@ -1,12 +1,14 @@
 <div class="container">
-    <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-    <div class="row">
+ <div class="row">
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12 no-padding">
         <h1 class="text-left">My portfolio</h1>
         <h3 class="text-left">Search for Stock</h3>
+        </div>
     </div>
     <%= form_tag search_stocks_path, remote: true, method: :get, id: "stock-lookup-form" do %>
-        <div class="form-group row text-center no-padding col-md-12">
+        <div class="form-group row">
         <div class="col-md-10 no-padding">
             <div class="search-box">
                 <%= text_field_tag :stock, params[:stock], placeholder: 'Stock ticker symbol', 
@@ -16,15 +18,25 @@
          <div class="col-md-2">
           <div class="search-button">
             <%= button_tag(type: :submit, class: 'btn btn-lg btn-success') do %>
-                Look up a stock
+                <i class="fa fa-search"></i> Look up a stock
             <% end %>
           </div>
         </div>
      </div>
      <% end %>
-  <div class="results">
-      <%= render "result" %>
   </div>
 </div>
+<div class="row">
+    <div class="col-md-10">
+    <div class="results">
+      <%= render "result" %>
+    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <%= render "stocks/list" %>
+    </div>
+    </div>
 </div>
 </div>

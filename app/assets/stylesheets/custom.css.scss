@@ -1,3 +1,39 @@
+*{margin: 0; padding: 0;}
 .no-padding {
  padding: 0px!important;
+}
+.left-padding{
+ padding-left: 1%!important;   
+}
+.add-stock{
+    padding: 10px 16%;
+}
+
+.results-block{
+    padding: 1.5%;
+}
+.label_notice{
+    background-color: red;
+    display: inline-block;
+    padding: 13%;
+    margin-top: 2px;
+}
+
+.logout {
+  padding-left: 0;
+  margin-top: -1px;
+}
+
+.user_name {
+  padding-top: 15px;
+}
+
+.nav.navbar-right li {
+  .btn {
+    color: #fff !important;
+    margin-top: 5%;
+  }
+  .btn-danger:hover {
+    background-color: darken(#d9534f, 20%) !important;
+  }
 }
